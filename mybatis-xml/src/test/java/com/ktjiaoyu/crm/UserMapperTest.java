@@ -19,15 +19,13 @@ record UserMapperTest(@Autowired UserMapper userMapper) {
     @Test
     void testSelectById() {
         User user = userMapper.selectById(18L);
-        System.out.println("usrName: " + user.getUsrName());
+        System.out.println(user);
     }
 
     @Test
-    void testFindAll() {
+    void testSelectList() {
         List<User> list = userMapper.selectList(null);
-        for (User user : list) {
-            System.out.println("usrName: " + user.getUsrName());
-        }
+        for (User user : list) System.out.println(user);
     }
 
 }

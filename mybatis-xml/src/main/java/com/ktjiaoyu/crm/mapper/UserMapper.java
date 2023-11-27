@@ -23,13 +23,13 @@ public interface UserMapper extends BaseMapper<User> {
                         usr_name = #{usrName},
                     </if>
                     <if test="usrPassword != null">
-                        usr_password=#{usrPassword},
+                        usr_password = #{usrPassword},
                     </if>
                     <if test="usrRoleId != null">
-                        usr_role_id=#{usrRoleId},
+                        usr_role_id = #{usrRoleId},
                     </if>
                     <if test="usrFlag != null">
-                        usr_flag=#{usrFlag}
+                        usr_flag = #{usrFlag}
                     </if>
                 </set>
                 WHERE usr_id = #{usrId}

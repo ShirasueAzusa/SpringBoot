@@ -1,64 +1,63 @@
-<!--&lt;!&ndash;-->
-<!--<?xml version="1.0" encoding="UTF-8" ?>-->
-<!--<!DOCTYPE mapper-->
-<!--        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
-<!--        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
-<!--<mapper namespace="com.ktjiaoyu.crm.mapper.UserMapper">-->
-<!--    <resultMap id="UserResultMap" type="User">-->
-<!--        <id column="usr_id" property="usrId"/>-->
-<!--        <result column="usr_name" property="usrName"/>-->
-<!--        <result column="usr_password" property="usrPassword"/>-->
-<!--        <result column="usr_role_id" property="usrRoleId"/>-->
-<!--        <result column="usr_flag" property="usrFlag"/>-->
-<!--    </resultMap>-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ktjiaoyu.crm.mapper.UserMapper">
+    <resultMap id="UserResultMap" type="User">
+        <id column="usr_id" property="usrId"/>
+        <result column="usr_name" property="usrName"/>
+        <result column="usr_password" property="usrPassword"/>
+        <result column="usr_role_id" property="usrRoleId"/>
+        <result column="usr_flag" property="usrFlag"/>
+    </resultMap>
 
-<!--    <sql id="columns">-->
-<!--        usr_id,-->
-<!--        usr_name,-->
-<!--        usr_password,-->
-<!--        usr_role_id,-->
-<!--        usr_flag-->
-<!--    </sql>-->
+    <sql id="columns">
+        usr_id,
+        usr_name,
+        usr_password,
+        usr_role_id,
+        usr_flag
+    </sql>
 
-<!--    <insert id="insert" parameterType="User">-->
-<!--        INSERT INTO sys_user(usr_name, usr_password, usr_role_id, usr_flag)-->
-<!--        VALUES (#{usrName}, #{usrPassword}, #{usrRoleId}, #{usrFlag})-->
-<!--    </insert>-->
+    <insert id="insert" parameterType="User">
+        INSERT INTO sys_user(usr_name, usr_password, usr_role_id, usr_flag)
+        VALUES (#{usrName}, #{usrPassword}, #{usrRoleId}, #{usrFlag})
+    </insert>
 
-<!--    <delete id="delete" parameterType="Long">-->
-<!--        DELETE FROM sys_user-->
-<!--        WHERE usr_id = #{id}-->
-<!--    </delete>-->
+    <delete id="delete" parameterType="Long">
+        DELETE FROM sys_user
+        WHERE usr_id = #{id}
+    </delete>
 
-<!--    <update id="update" parameterType="User">-->
-<!--        UPDATE sys_user-->
-<!--        <set>-->
-<!--            <if test="usrName != null">-->
-<!--                usr_name = #{usrName},-->
-<!--            </if>-->
-<!--            <if test="usrPassword != null">-->
-<!--                usr_password=#{usrPassword},-->
-<!--            </if>-->
-<!--            <if test="usrRoleId != null">-->
-<!--                usr_role_id=#{usrRoleId},-->
-<!--            </if>-->
-<!--            <if test="usrFlag != null">-->
-<!--                usr_flag=#{usrFlag}-->
-<!--            </if>-->
-<!--        </set>-->
-<!--        WHERE usr_id = #{usrId}-->
-<!--    </update>-->
+    <update id="update" parameterType="User">
+        UPDATE sys_user
+        <set>
+            <if test="usrName != null">
+                usr_name = #{usrName},
+            </if>
+            <if test="usrPassword != null">
+                usr_password=#{usrPassword},
+            </if>
+            <if test="usrRoleId != null">
+                usr_role_id=#{usrRoleId},
+            </if>
+            <if test="usrFlag != null">
+                usr_flag=#{usrFlag}
+            </if>
+        </set>
+        WHERE usr_id = #{usrId}
+    </update>
 
-<!--    <select id="get" parameterType="Long" resultMap="UserResultMap">-->
-<!--        SELECT-->
-<!--        <include refid="columns"/>-->
-<!--        FROM sys_user-->
-<!--        WHERE usr_id = #{id}-->
-<!--    </select>-->
+    <select id="get" parameterType="Long" resultMap="UserResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM sys_user
+        WHERE usr_id = #{id}
+    </select>
 
-<!--    <select id="findAll" resultMap="UserResultMap">-->
-<!--        SELECT-->
-<!--        <include refid="columns"/>-->
-<!--        FROM sys_user-->
-<!--    </select>-->
-<!--</mapper>&ndash;&gt;-->
+    <select id="findAll" resultMap="UserResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM sys_user
+    </select>
+</mapper>
