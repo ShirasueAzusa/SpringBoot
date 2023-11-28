@@ -14,20 +14,17 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("sys_user")
-public class User implements Serializable {
+@TableName("sys_role_right")
+public class RoleRight implements Serializable {
     @Serial
-    private static final long serialVersionUID = -11678175052773187L;
+    private static final long serialVersionUID = 341157730709120608L;
 
     @TableId(type = IdType.AUTO)
-    @TableField("usr_id")
-    private Long usrId;
-    @TableField("usr_name")
-    private String usrName;
-    @TableField("usr_password")
-    private String usrPassword;
-    @TableField("usr_role_id")
-    private Long usrRoleId;
-    @TableField("usr_flag")
-    private Integer usrFlag;
+    @TableField("rf_id")
+    private Long rfId;
+    @TableField("rf_role_id")
+    private Long rfRoleId;
+    @TableField("rf_right_code")
+    private String rfRightCode;
 }
+

@@ -4,12 +4,16 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serial;
 import java.io.Serializable;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @TableName("sys_role")
 public class Role implements Serializable {
     @Serial
@@ -24,14 +28,4 @@ public class Role implements Serializable {
     private String roleDesc;
     @TableField("role_flag")
     private Integer roleFlag;
-
-    public Role() {
-    }
-
-    public Role(Long roleId, String roleName, String roleDesc, Integer roleFlag) {
-        this.roleId = roleId;
-        this.roleName = roleName;
-        this.roleDesc = roleDesc;
-        this.roleFlag = roleFlag;
-    }
 }
