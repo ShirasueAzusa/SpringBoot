@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mybatis-xml" />
         <module name="demo" />
+        <module name="crm" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="crm" options="-parameters" />
       <module name="demo" options="-parameters" />
       <module name="mybatis-xml" options="-parameters" />
     </option>
