@@ -6,6 +6,7 @@
         <option value="$PROJECT_DIR$/demo/pom.xml" />
         <option value="$PROJECT_DIR$/mybatis-xml/pom.xml" />
         <option value="$PROJECT_DIR$/web/pom.xml" />
+        <option value="$PROJECT_DIR$/thymeleaf/pom.xml" />
       </list>
     </option>
   </component>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- 用来设置不同的title -->
+    <title th:replace="${titlle}">Title</title>
+    <!-- 添加公共的css和js -->
+    <link media="all" rel="stylesheet" th:href="@{/css/comm.css}" type="text/css">
+    <script th:src="@{/js/comm.js}" type="text/javascript"></script>
+    <!-- 用来添加私有的css -->
+    <th:block th:replace="${links}"/>
+</head>
+<body>
+<header th:fragment="header">
+    <h3>我是 头部</h3>
+</header>
+</body>
+</html>

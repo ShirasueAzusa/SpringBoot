@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{https://www.ktjiaoyu.com/}" th:if="${flag == 'yes'}">ktjiaoyu</a>
+<a th:href="@{https://www.czkt.com/}" th:unless="${flag == 'no'}">czkt</a>
+</body>
+</html>

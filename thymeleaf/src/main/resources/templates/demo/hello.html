@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+赋值：<span th:text="${user.usrName}">usrName</span><br>
+拼接：<span th:text="'Hello ' + ${user.usrName} + '!'">Hello userName!</span><br>
+拼接：<span th:text="|Hello ${user.usrName}!|">Hello userName!</span>
+</body>
+</html>
