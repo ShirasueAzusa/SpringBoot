@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.ktjiaoyu</groupId>
-    <artifactId>crm</artifactId>
+    <artifactId>web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>web</name>
     <packaging>jar</packaging>

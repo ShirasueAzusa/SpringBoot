@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="WebApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-    <module name="crm" />
+    <module name="web" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.ktjiaoyu.crm.WebApplication" />
     <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/web" />
     <method v="2">

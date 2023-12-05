@@ -10,6 +10,7 @@
         <module name="mybatis-xml" />
         <module name="thymeleaf" />
         <module name="demo" />
+        <module name="web" />
         <module name="crm" />
       </profile>
     </annotationProcessing>
@@ -20,6 +21,7 @@
       <module name="demo" options="-parameters" />
       <module name="mybatis-xml" options="-parameters" />
       <module name="thymeleaf" options="-parameters" />
+      <module name="web" options="-parameters" />
     </option>
   </component>
 </project>

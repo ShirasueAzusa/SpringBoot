@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh" layout:decorate="main"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户管理</title>
+    <link href="../static/localcss/crmlist.css" rel="stylesheet" th:href="@{/localcss/crmlist.css}">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>
+                            用户管理 <i class="fa fa-user"></i>
+                            <small>
+                                - 您可以通过搜索或者其他的筛选项对用户的信息进行编辑、删除等管理操作。^_^
+                            </small>
+                        </h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form action="/user/list" method="post" th:action="@{/user/list}">
+                            <input name="pageIndex" type="hidden" value="1"/>
+                            <ul>
+                                <li>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">用户名称</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label>
+                                                <input class="form-control col-md-6 col-xs-12" name="usrName" th:value="${usrName}"
+                                                       type="text" value="">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">角色</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <label for="roleId"></label><select class="form-control" id="roleId" name="roleId">
+                                            <option value="0">--请选择--</option>
+                                            <!-- <option th:selected="${role.roleId eq roleId}"
+                                                  th:each="role:${roles}"
+                                                  th:value="${role.roleId}"
+                                                  th:text="${role.roleName}" value="">角色1</option>-->
+
+                                        </select>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <button class="btn btn-primary" type="submit"> 查 &nbsp;&nbsp;&nbsp;&nbsp;询</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <p class="text-muted font-13 m-b-30"></p>
+                        <div class="dataTables_wrapper form-inline dt-bootstrap no-footer"
+                             id="datatable-responsive_wrapper">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <a class="btn btn-success btn-sm" href="/user/add"
+                                       shiro:hasPermission="L060101"
+                                       th:href="@{/user/add}">新增用户信息</a>
+                                    <table aria-describedby="datatable-responsive_info"
+                                           cellspacing="0"
+                                           class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" id="datatable-responsive" role="grid"
+                                           style="width: 100%;" width="100%">
+                                        <thead>
+                                        <tr role="row">
+                                            <th aria-controls="datatable-responsive" aria-label="First name: activate to sort column descending"
+                                                aria-sort="ascending" class="sorting_asc" colspan="1"
+                                                rowspan="1"
+                                                tabindex="0">编号
+                                            </th>
+                                            <th aria-controls="datatable-responsive" aria-label="Last name: activate to sort column ascending"
+                                                class="sorting" colspan="1" rowspan="1"
+                                                tabindex="0">
+                                                用户名
+                                            </th>
+                                            <th aria-controls="datatable-responsive" aria-label="Last name: activate to sort column ascending"
+                                                class="sorting" colspan="1" rowspan="1"
+                                                tabindex="0">
+                                                角色
+                                            </th>
+                                            <th aria-controls="datatable-responsive" aria-label="Last name: activate to sort column ascending"
+                                                class="sorting" colspan="1" rowspan="1"
+                                                tabindex="0">
+                                                操作
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="odd" role="row" th:each="user:${userPager.records}">
+                                            <td class="sorting_1" tabindex="0" th:text="${user.usrId}">usrId</td>
+                                            <td th:text="${user.usrName}">usrName</td>
+                                            <td th:text="${user.role.roleName}">roleName</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-danger" type="button">点击操作</button>
+                                                    <button aria-expanded="false" class="btn btn-danger dropdown-toggle"
+                                                            data-toggle="dropdown" type="button">
+                                                        <span class="caret"></span>
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a class="editInfo" data-original-title="编辑" data-placement="top"
+                                                               data-toggle="tooltip" href="/user/edit?usrId=1" th:href="@{/user/edit(usrId=${user.usrId})}"
+                                                               title="">编辑</a></li>
+                                                        <li><a class="delInfo" data-original-title="删除" data-placement="top" data-toggle="tooltip"
+                                                               href="#" id="del" th:onclick="|doDel(this,${user.usrId})|"
+                                                               title="">删除</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div aria-live="polite" class="dataTables_info"
+                                         id="datatable-responsive_info" role="status">共<span th:text="${userPager.total }">1</span>条记录
+                                        <span th:text="${userPager.current }">1</span>/<span th:text="${userPager.pages }">1</span>页
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate paging_simple_numbers"
+                                         id="datatable-responsive_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button previous" th:if="${userPager.current gt 0}"><a
+                                                    aria-controls="datatable-responsive"
+                                                    data-dt-idx="0" href="javascript:page_nav(document.forms[0],1);"
+                                                    tabindex="0">首页</a>
+                                            </li>
+                                            <li class="paginate_button " th:if="${userPager.current gt 0}"><a
+                                                    aria-controls="datatable-responsive" data-dt-idx="1"
+                                                    href="#" tabindex="0"
+                                                    th:onclick="'javascript:page_nav(document.forms[0],'+${userPager.current-1 }+');'">上一页</a>
+                                            </li>
+                                            <li class="paginate_button " th:if="${(userPager.current) lt userPager.pages}"><a
+                                                    aria-controls="datatable-responsive" data-dt-idx="1"
+                                                    href="#" tabindex="0"
+                                                    th:onclick="'javascript:page_nav(document.forms[0],'+${userPager.current+1 }+');'">下一页</a>
+                                            </li>
+                                            <li class="paginate_button next" th:if="${(userPager.current+1) lt userPager.pages}"><a
+                                                    aria-controls="datatable-responsive" data-dt-idx="7"
+                                                    href="#" tabindex="0"
+                                                    th:onclick="'javascript:page_nav(document.forms[0],'+${userPager.pages }+');'">最后一页</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script layout:fragment="js" th:inline="javascript">
+    function doDel(obj, usrId) {
+        if (confirm("你确定需要删除该用户信息吗？")) {
+            $.ajax({
+                type: "GET",
+                url: "/user/del",
+                data: "usrId=" + usrId,
+                dataType: "json",
+                success: function (data) {
+                    if (data.delResult == true) {//删除成功：移除删除行
+                        alert("删除成功！");
+                        $(obj).parents("tr").remove();
+                    } else {
+                        alert("对不起，删除失败！");
+                    }
+                },
+                error: function (data) {
+                    alert("对不起，删除失败！");
+                }
+            });
+        }
+    }
+
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/role/json",
+            dataType: "json",
+            success: function (data) {
+                //获取model中roleId
+                var roleId = [[${roleId}]];
+                // alert("json："+data);
+                for (var i in data) {
+                    var op = "<option ";
+                    if (data[i].roleId == roleId) {
+                        op += " selected='selected' ";
+                    }
+                    op += " value='" + data[i].roleId + "'>" + data[i].roleName + "</option>";
+                    $("#roleId").append(op);
+                }
+            },
+            error: function (data) {
+                alert("对不起，获取数据失败！");
+            }
+        });
+    });
+</script>
+</html>

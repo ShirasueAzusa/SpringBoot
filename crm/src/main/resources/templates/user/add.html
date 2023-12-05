@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="main" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户添加</title>
+    <link href="../static/localcss/crmadd.css" rel="stylesheet" th:href="@{/localcss/crmlist.css}">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>新增用户信息 <i class="fa fa-user"></i></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="clearfix"></div>
+                        <form action="/user/save" class="form-horizontal form-label-left" method="post">
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="usrName"> 用户名 <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input class="form-control col-md-7 col-xs-12" data-validate-length-range="10"
+                                           data-validate-words="1" id="usrName" name="usrName" placeholder="请输入用户名"
+                                           required="required" type="text">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="usrPassword"> 密码 <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <input class="form-control col-md-7 col-xs-12" data-validate-length-range="10"
+                                           data-validate-words="1" id="usrPassword" name="usrPassword" placeholder="请输入密码"
+                                           required="required" type="password">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="roleId"> 用户角色 <span class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <select class="form-control" id="roleId" name="usrRoleId" required="required">
+                                        <option th:each="role:${roles}" th:text="${role.roleName}" th:value="${role.roleId}" value="">角色</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-3">
+                                    <button class="btn btn-success" id="send" type="submit">保存</button>
+                                    <button class="btn btn-primary" id="back" type="button">返回</button>
+                                    <br/><br/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script layout:fragment="js">
+    $(document).ready(function () {
+        $("#back").on("click", function () {
+            window.history.back();
+        });
+    });
+</script>
+</html>
