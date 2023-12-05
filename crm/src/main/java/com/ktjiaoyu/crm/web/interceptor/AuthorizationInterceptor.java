@@ -13,7 +13,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         if (request.getSession().getAttribute("loginUser") != null) return true;
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
-        out.print("<script>alert('请先进行登录，再进行后续操作！（Interceptor控制）'); location.href = '" + request.getContextPath() + "/login.jsp';</script>");
+        out.print("<script>alert('请先进行登录，再进行后续操作！（Interceptor控制）'); location.href = '" + request.getContextPath() + "/login';</script>");
         return false;
     }
 }

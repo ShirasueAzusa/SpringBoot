@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mybatis-xml" />
+        <module name="jpa" />
         <module name="thymeleaf" />
         <module name="demo" />
         <module name="web" />
@@ -19,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="crm" options="-parameters" />
       <module name="demo" options="-parameters" />
+      <module name="jpa" options="-parameters" />
       <module name="mybatis-xml" options="-parameters" />
       <module name="thymeleaf" options="-parameters" />
       <module name="web" options="-parameters" />
